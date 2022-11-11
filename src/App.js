@@ -1,8 +1,9 @@
 import "./App.css";
-import MessageStatus from "./components/message";
+import MessageStatus from "./components/message/index.jsx";
 
 function App() {
-  return <MessageStatus message="kek" status="oks" />;
+  const message = prompt("Enter message: ");
+  return <MessageStatus message={message} />;
 }
 
 export default App;

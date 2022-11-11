@@ -1,18 +1,32 @@
-import { Components } from "react";
+import React, { Component } from "react";
 
-class MessageStatus extends Components {
+class MessageStatus extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { status: false };
+  }
+
+  changeStatus = () => {
+    this.setState({
+      status: !this.state.status,
+    });
+  };
   render() {
-    const { message, status } = this.props;
+    let { message } = this.props;
+    let { status } = this.state;
 
     return (
       <>
         <div>
-          <h1> {message}</h1>
-          <h2>{status}</h2>
+          <h2> {message}</h2>
+          <p>{status ? "status: read" : "status: unread"}</p>
         </div>
+        <button disabled={status} onClick={this.changeStatus}>
+          Read
+        </button>
       </>
     );
   }
-};
+}
 
-export default MessageStatus
+export default MessageStatus;
